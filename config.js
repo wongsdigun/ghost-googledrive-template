@@ -21,20 +21,6 @@ config = {
         //     debug: false
         // },
 
-        // DATABASE_URL: postgres://ngdxgyibtzlhdb:bcee020a75e58433fa15bdcdcaf8d9bd6c5d12aa49006685db174cf16a789b10@ec2-54-243-214-198.compute-1.amazonaws.com:5432/d4g717jmi1b3fu
-
-
-        // database: {
-        //     client: 'postgres',
-        //     connection: {
-        //         host: 'ec2-54-243-214-198.compute-1.amazonaws.com',
-        //         user: 'ngdxgyibtzlhdb',
-        //         password: 'bcee020a75e58433fa15bdcdcaf8d9bd6c5d12aa49006685db174cf16a789b10',
-        //         database: 'd4g717jmi1b3fu';
-        //         port: '5432'
-        //     }
-        // },
-
          database: {
             client: 'postgres',
             connection: {
@@ -75,7 +61,7 @@ config = {
     development: {
         // The url to use when providing links to the site, E.g. in RSS and email.
         // Change this to your Ghost blog's published URL.
-        url: 'http://localhost:2368',
+        url: 'http://localhost:9999',
 
         // Example refferer policy
         // Visit https://www.w3.org/TR/referrer-policy/ for instructions
@@ -112,12 +98,29 @@ config = {
             // Host to be passed to node's `net.Server#listen()`
             host: '127.0.0.1',
             // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
-            port: '2368'
+            port: '9999'
         },
         // #### Paths
         // Specify where your content directory lives
         paths: {
             contentPath: path.join(__dirname, '/content/')
+        },
+        storage: {
+            active: 'ghost-google-drive',
+            'ghost-google-drive': {
+                key: {
+                "type": "service_account",
+                "project_id": "ghost-159307",
+                "private_key_id": "ca78f7e71445a13173aa2563bcb54cecfaeade5a",
+                "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDg4XKOhSMK0h3O\nXUuYtIzfseilhSKSufrLmwW81PxSinEm5Gh2a2Mus5Gyiju15VEYglIIB6McLM8U\nr/Zm0MTr8nHWN4QEajDvt/McjRZknAe9fqYQvUH5K+p6WYDmtWONeCLi9QY5TPCc\nSLWy/KSYXyb6XJyjVu6dw58/srzppUAzSFci/qRAMvB010f93u1CyYDMIxHpgxvp\n5KpLNtXbDcOlLlYgioa3zfmBH95eEuHF2tQTLEf/XVOClTsaIiNifG7fnMBFweW2\nhrCaT9t3mJ7NukXOh5J+27U2l2IMaW3K+WvUm73I3B5lOG+YxYejggs+Vjnfie7J\npDnNVFeHAgMBAAECggEAOSm1p/q5zJ9aikF23OtQP/CGVcTA5BE4ahcO31A4j3a3\nio5W63sirBVjPMIcqYEQGy3NUlM2qAvP289a0AnTdLKdMznLah/gLp9QwfovLgXn\nhciyx+CD66W5Jb6ooHyNQMHABHcKTPh81Q06erPz1vOhAdUW0AJiB2JZkaSKls07\nvSaqeFxGWNHYhYFOrZRUefdvGwB0pMPCfztDkIVXnIqbBi7RBTYD8+fKv5aU2ZGW\nQZLpx8QkBqxeyJ3zFTK2xbUxOX/RJMt+6846LZrsgKeT5X8MH/jEZ2SiaNcrl1l7\nnw2Pz9aaSS47TuK4c7PopSL9U5P9cXh4+z/8n59NMQKBgQD2aINJo+7rmOOsLDRK\nAhWQZZBIyolnRDatXwmZqG3RfpJW8LSt4kpgoqSKUgzvXIuKtpd5dO9u+42PCo6L\naGLj6snNTTbaW49x5sseTUWOH4cbARR3gbFF99unx34k4SCNFF35cPuN17kj39gt\nOfwaPQtt68YEp+XdwfVncgxn+QKBgQDpomjbKzUNarbdw76yNdPvNy8HgEca0mj6\n1BlOA+gSZKdxTZB9UpC3PcANYcurdyQ5pQM4xPbC/yomR8sBVljLzvu3zCGoj2Ic\nKx5OHq0dVBJd7w4vT+mEchXE6NPdiCWQkNj2me00gmDS03iUhB+N7n+NEh/UA3iS\nHh6K0EGbfwKBgQDHNRFG3LCQacdOb2JKnsq+NU3je1KAWQZ3PUkun5tA7bnzbaA0\nn6iP3Y12ggURElmB6EInoCDeMaJtDRTWoaqpJizFvHHnMHSUmgiGU+QylUyNyV65\nivE9Zrd/OenCePru85NR0USdlNSJqzNCxQkKUWXHFQC+zNoqYN88JVjgSQKBgBom\n++XMqFugHmgkiSwZqmeUnccRLORruSSaqVp6RXgJnFSqggoFO/3HA8B7ufivlXZ+\naiXopladiXJPhwHXUIk/2h1w1DOyGSFeEj5cYLRvvL6XC9dv8ovI2Xb5OP4LR2kv\nTZoNEOhXz87JrS2yvHV+xPhdlwJ8gPqaNIEFXtKxAoGBAJ08eItfQDCuPVEFloVE\nsut3W69kJkWn7ge5H6E4GDVFUXVYbpSfYMeKv/Iak7pvGzc34eOtdh0R7tv83QIr\nypPCrfH9WSb6NjhSkoZt4HK5jLIyitPDFaoxDBVsrijcVdTmMsd1/Ly5z4T5HcA1\nVwpJbA2bcBBOMLTw1ewejMm3\n-----END PRIVATE KEY-----\n",
+                "client_email": "ghost-meridian@ghost-159307.iam.gserviceaccount.com",
+                "client_id": "115957470398689636283",
+                "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                "token_uri": "https://accounts.google.com/o/oauth2/token",
+                "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ghost-meridian%40ghost-159307.iam.gserviceaccount.com"
+                }
+            }
         }
     },
 
